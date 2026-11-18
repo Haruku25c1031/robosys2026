@@ -1,5 +1,5 @@
 echo $?#!/usr/bin/python3
-# SPDX-FileCopyrightText: 2026 Taro Suzuki
+# SPDX-FileCopyrightText: 2026 Haruki Kanno
 # SPDX-License-Identifier: BSD-3-Clause
 import sys
 
