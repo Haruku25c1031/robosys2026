@@ -1,27 +1,20 @@
 #!/usr/bin/env python3
-# SPDX-FileCopyrightText: 2026 あなたの名前
+# SPDX-FileCopyrightText: 2026 Haruki Kanno
 # SPDX-License-Identifier: BSD-3-Clause
 
 import sys
 import re
 
 def main():
-    # 標準入力からデータを受け取る
     try:
         input_text = sys.stdin.read()
     except Exception as e:
-        # エラーは標準エラー出力に出す
         print(f"Error reading input: {e}", file=sys.stderr)
         sys.exit(1)
 
-    # 余計なメッセージ（「処理を開始します」など）は絶対に出さない
-    # メールアドレスっぽい文字列を ***@***.*** に置換
     masked_text = re.sub(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}', '***@***.***', input_text)
-
-    # 連続する10〜11桁の数字（電話番号想定）を ***-****-**** に置換
     masked_text = re.sub(r'\b\d{10,11}\b', '***-****-****', masked_text)
 
-    # 結果だけを標準出力に出す
     print(masked_text, end="")
 
 if __name__ == '__main__':
