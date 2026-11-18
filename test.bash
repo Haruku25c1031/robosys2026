@@ -1,30 +1,19 @@
 #!/bin/bash
-# SPDX-FileCopyrightText: 2026 Haruki kanno
+# SPDX-FileCopyrightText: 2026 Haruki Kanno
 # SPDX-License-Identifier: BSD-3-Clause
 
-ng () {
-    echo ${1}行目のテスト失敗
-    res=1
-}
+# 正常系テスト
+out=$(echo "My email is test@example.com." | ./mask-text)
+if [ "$out" != "My email is ***@***.***." ]; then
+    echo "Test 1 failed"
+    exit 1
+fi
 
-res=0
+out=$(echo "Call me at 09012345678" | ./mask-text)
+if [ "$out" != "Call me at ***-****-****" ]; then
+    echo "Test 2 failed"
+    exit 1
+fi
 
-out=$(seq 5 | ./plus)
-[ "${out}" = 15 ] || ng "$LINENO"
-
-### NORMAL INPUT ###
-out=$(seq 5 | ./plus)
-[ "$?" = 0 ]      || ng "$LINENO"
-[ "${out}" = 15 ] || ng "$LINENO"
-
-### STRANGE INPUT ###
-out=$(echo あ | ./plus)
-[ "$?" = 1 ]      || ng "$LINENO"
-[ "${out}" = "" ] || ng "$LINENO"
-
-out=$(echo | ./plus)
-[ "$?" = 1 ]      || ng "$LINENO"
-[ "${out}" = "" ] || ng "$LINENO"
-
-[ "${res}" = 0 ] && echo OK
-exit $res
+echo "All tests passed!"
+exit 0
