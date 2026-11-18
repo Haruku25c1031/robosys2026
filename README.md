@@ -1,18 +1,12 @@
-# plusコマンド
-![test](https://github.com/<ユーザ名>/robosys2026/actions/workflows/test.yml/badge.svg)
+# mask-text
+![test](https://github.com/Haruku25c1031/robosys2026/actions/workflows/test.yml/badge.svg)
 
-標準入力から読み込んだ数字を足すコマンドです。
+標準入力から受け取ったテキストに含まれるメールアドレスや電話番号（10〜11桁の連続した数字）を秘匿化（マスキング）して標準出力に返すコマンドです。
 
 ## 使い方
-（ここに実行方法などを書く）
+リポジトリをクローンし、ディレクトリに移動して実行します。
 
-## 必要なソフトウェア
-- Python
-- テスト済みバージョン: 3.10 ~ 3.14
-
-## テスト環境
-- Ubuntu 24.04 LTS
-
-## ライセンス
-このソフトウェアパッケージは、3条項BSDライセンスの下、再頒布および使用が許可されます。
-- © 2026 Haruki Kanno
+```bash
+$ git clone [https://github.com/Haruku25c1031/robosys2026.git](https://github.com/Haruku25c1031/robosys2026.git)
+$cd robosys2026$ echo "連絡先は test@example.com または 09012345678 です" | ./mask-text
+連絡先は ***@***.*** または ***-****-**** です
